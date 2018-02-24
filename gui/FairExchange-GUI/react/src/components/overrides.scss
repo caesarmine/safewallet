@@ -1,0 +1,686 @@
+/* TODO: nesting, separate */
+
+#app {
+  height: 100%;
+
+  > div {
+    height: 100%;
+  }
+}
+
+.page-main {
+  background: #f3f4f5;
+}
+
+#safe_header_button {
+  button {
+    margin-right: 5px;
+  }
+}
+
+.widget {
+  &.active {
+    .bg-white {
+      box-shadow: inset 1px 1px 10px #ccc;
+    }
+  }
+}
+
+body {
+  padding-top: 44px;
+}
+
+#section-dashboard {
+  height: 100%;
+}
+
+#edexcoin_dashboardinfo a,
+.nav-top-menu,
+#safe_txid_info_mdl .nav-tabs li,
+.pagination a,
+.action {
+  cursor: pointer;
+  cursor: hand;
+}
+
+#fairexchange-header-div {
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.unselectable {
+  user-select: none;
+}
+
+.seed-toggle {
+  position: absolute;
+  right: 0;
+  top: 6px;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.radio-custom {
+  input {
+    cursor: pointer;
+    cursor: hand;
+  }
+}
+
+.collapse {
+  overflow: hidden;
+  display: block;
+}
+
+.collapse-active,
+.panel>:not(.panel-loading):not(.collapsing) {
+  transition: height 0.3s ease-out;
+}
+
+.rc-tree {
+  height: 450px;
+  overflow-y: scroll;
+  margin-top: 20px;
+
+  a {
+    pointer-events: none;
+  }
+  li {
+    span {
+      &.rc-tree-iconEle {
+        display: none;
+      }
+    }
+  }
+}
+
+.rc-tree-node-content-wrapper-close + ul {
+  height: 0;
+}
+.rc-tree-node-content-wrapper {
+  user-select: none;
+}
+.rc-tree-node-content-wrapper-normal {
+  color: inherit;
+  pointer-events: all;
+  user-select: all;
+}
+
+#RefreshBasiliskConnectionsMdl {
+  .btn-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+}
+
+.page-aside {
+  position: fixed;
+}
+
+.page-aside-inner {
+  .wallet-widgets-list {
+    overflow-y: auto;
+    height: 100%;
+  }
+}
+
+.btn-outline-primary {
+  color: #FF6600;
+  background-color: #fff;
+  border-color: #FF6600;
+}
+
+.center {
+  text-align: center;
+}
+
+.navbar {
+  &.navbar-fixed-top {
+    .dropdown {
+      &.open {
+        .dropdown-menu {
+          right: 0;
+        }
+      }
+      .dropdown-menu {
+        display: block;
+        right: -165px;
+      }
+    }
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+
+   input {
+    display: none;
+  }
+}
+
+.slider {
+  border-radius: 20px;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+
+  &.round {
+    border-radius: 34px;
+
+    &:before {
+      border-radius: 50%;
+    }
+  }
+  &:before {
+    border-radius: 50%;
+    position: absolute;
+    content: '';
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+}
+
+.toggle-label {
+  color: #757575;
+  display: inline-block;
+  position: relative;
+  top: -12px;
+  left: 8px;
+}
+
+input:checked + .slider {
+  background-color: rgb(57, 73, 171);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px rgb(57, 73, 171);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(16px);
+  -ms-transform: translateX(16px);
+  transform: translateX(16px);
+}
+
+.dropdown-menu {
+  li {
+    cursor: pointer;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.coin-logo {
+  &.breadcrumb {
+    z-index: 100;
+  }
+}
+.breadcrumb > li + li:before {
+  display: none;
+}
+
+#js-copytextarea {
+  opacity: 0;
+  height: 10px;
+  width: 200px;
+}
+
+.bootstrap-select {
+  > .dropdown-toggle {
+    z-index: 0;
+  }
+}
+
+select{
+  &.form-control {
+    &.form-material {
+      color: #757575;
+    }
+  }
+}
+
+.site-navbar {
+  .navbar-brand-logo {
+    height: 32px;
+    width: 110px;
+  }
+}
+
+.navbar-brand {
+  padding: 22px 15px;
+}
+
+.panel-actions {
+  .progress {
+    width: inherit;
+  }
+}
+
+.basilisk-actions {
+  .caret {
+    margin-left: 10px;
+    margin-top: -2px;
+  }
+}
+
+.clipboard-edexaddr {
+  margin-left: 10px;
+}
+
+.backround-gray {
+  background: #f3f4f5;
+}
+
+.manual-balance-refresh,
+.manual-txhistory-refresh {
+  position: absolute;
+  right: 4px;
+  top: 3px;
+}
+
+.table-striped {
+  > tbody {
+    > tr.hover--none {
+      background-color: inherit;
+    }
+  }
+}
+
+@media only screen and (min-width : 1201px) {
+  .wallet-widgets {
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    > div {
+      display: flex;
+
+      .widget,
+      .widget-content {
+        height: 100%;
+
+        > div,
+        .clearfix {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+.breadcrumb {
+  padding: 8px 30px 0;
+  position: relative;
+  top: -10px;
+}
+
+.header-fairexchange-section {
+  img {
+    max-width: 60px;
+  }
+}
+
+.coin-logo-wide {
+  padding: 8px 30px 0;
+  position: relative;
+  top: 0;
+
+  .header-fairexchange-section {
+    img {
+      width: inherit;
+      max-width: inherit;
+      position: relative;
+      top: -5px;
+    }
+  }
+
+  &.native-coin-logo {
+    top: -93px;
+
+    .header-fairexchange-section {
+      img {
+        width: inherit;
+      }
+    }
+  }
+}
+
+.native-coin-logo {
+  float: left;
+  position: absolute;
+  top: -105px;
+  z-index: 100;
+
+  .header-fairexchange-section {
+    img {
+      width: 60px;
+      max-height: 60px;
+    }
+  }
+}
+
+.page-header--native {
+  height: 75px;
+}
+
+.page-header--spv {
+  height: 120px;
+
+  .page-header-actions {
+    top: 73%;
+  }
+}
+
+.toggle-filters:hover {
+  background-color: #f3f1f1;
+}
+
+.no-padding-left {
+  padding-left: 0;
+}
+
+.alert-info,
+.alert-warning {
+  width: 97.1%;
+  margin: 0 auto;
+}
+
+.page-content-native {
+  position: relative;
+  top: -20px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.modal {
+  .modal-content {
+    .modal-header {
+      .close {
+        font-size: 28px;
+        position: absolute;
+        z-index: 100;
+        right: 20px;
+        opacity: 0.5;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.balance-placeholder--bold {
+  .pull-left {
+    font-weight: 500;
+    font-size: 16px;
+    padding-top: 16px !important;
+  }
+}
+
+.tx-interest {
+  display: block;
+  color: #4caf50;
+  font-size: 13px;
+  padding-top: 5px;
+}
+
+.icon-spv-connection-warning,
+.icon-native-connection-warning {
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+
+  &:before {
+    color: #f2a654;
+    font-size: 18px;
+  }
+}
+
+.icon-native-connection-warning {
+  &:before {
+    color: #e9595b;
+  }
+}
+
+.color-warning {
+  color: #FF6600;
+}
+
+.link {
+  cursor: hand;
+  cursor: pointer;
+}
+
+.dashboard-claim-interest-btn {
+  padding: 4px 14px 4px 7px;
+  margin-left: 20px;
+}
+
+.win-sync-workaround-btn {
+  padding: 4px 7px;
+}
+
+.send-coin-sync-warning {
+  .icon {
+    font-size: 18px;
+  }
+  .desc {
+    position: relative;
+    top: -2px;
+  }
+}
+
+.dropdown-toggle {
+  &.disabled {
+    opacity: 1;
+    cursor: default !important;
+  }
+  .bs-caret {
+    display: none;
+  }
+}
+
+.coind-stop-icon,
+.coind-remove-icon {
+  font-size: 20px;
+  position: absolute;
+  top: 19px;
+  right: 12px;
+  color: #ccc !important;
+
+  &:hover {
+    color: #e9595b !important;
+  }
+}
+
+.coind-remove-icon {
+  transform: rotate(45deg);
+  top: 45px;
+}
+
+.coind-remove-icon-spv {
+  top: 19px;
+}
+
+.no-borders {
+  tbody > tr > td {
+    border: none;
+  }
+}
+
+.manual-debuglog-refresh {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  font-size: 20px;
+}
+
+.coind-stdout-refresh-icon {
+  font-size: 20px;
+  margin-top: 7px;
+}
+
+.settings-coind-stdout-textarea {
+  border: none;
+  background-image: none !important;
+}
+
+.receive-address-context-menu {
+  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.4);
+  background: #fff;
+  position: absolute;
+  z-index: 100;
+  margin-left: 65px;
+  margin-top: 5px;
+
+  ul {
+    margin: 0;
+    list-style: none;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-start: 0;
+
+    li {
+      padding: 5px 15px;
+
+      &:first-child {
+        margin-top: 5px;
+      }
+      &:last-child {
+        margin-bottom: 5px;
+      }
+      &:hover {
+        background: #f9f9f9;
+        cursor: pointer;
+      }
+    }
+  }
+  &.closed {
+    z-index: 1700;
+    position: absolute;
+    top: -100%;
+    left: -100%;
+  }
+  .receive-address-context-menu-get-qr {
+    .modal {
+      cursor: default;
+    }
+  }
+}
+
+.push-right {
+  float: right;
+}
+.push-left {
+  float: left;
+}
+
+.col-lg-12 {
+  &.col-xs-12 {
+    &.balance-placeholder--bold {
+      .icon {
+        &.fa-eye {
+          position: relative;
+          top: -2px;
+          padding-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+.col-red {
+  color: #f96868;
+}
+
+.spinner--small {
+  position: absolute;
+  right: 18px;
+  top: -15px;
+  transform: scale(0.4);
+}
+
+.spinner--medium {
+  position: absolute;
+  right: 38px;
+  top: 0;
+  transform: scale(0.5);
+}
+
+.Select {
+  cursor: pointer;
+
+  * { color: #757575 !important; }
+
+  .Select-clear {
+    display: none;
+  }
+  .Select-control {
+    height: 40px !important;
+
+    .Select-placeholder,
+    .Select-value {
+      line-height: 36px !important;
+    }
+  }
+}
+.Select-menu-outer {
+  max-height: 253px !important;
+}
+.Select-menu {
+  max-height: 250px !important;
+}
+.Select.is-open,
+.Select.is-focused {
+  .Select-control {
+    border-color: #FF6600 !important;
+    box-shadow: none !important;
+  }
+  .Select-menu-outer {
+    border-color: #FF6600 !important;
+    border-top-color: #d9d9d9 !important;
+  }
+}
+
+.modal-close-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.navbar-fixed-bottom,
+.navbar-fixed-top {
+  z-index: 100;
+}
+
+#section-iguana-wallet-settings {
+  > .row {
+    background: #f3f4f5;
+  }
+}

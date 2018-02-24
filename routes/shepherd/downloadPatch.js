@@ -12,10 +12,10 @@ module.exports = (shepherd) => {
 
     res.end(JSON.stringify(successObj));
 
-    shepherd.updateAgama();
+    shepherd.updateSafewallet();
   });
 
-  shepherd.updateAgama = () => {
+  shepherd.updateSafewallet = () => {
     const rootLocation = shepherd.path.join(__dirname, '../../');
 
     shepherd.downloadFile({

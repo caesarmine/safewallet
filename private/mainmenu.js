@@ -91,7 +91,7 @@ const template = [
     label: 'Support',
     submenu: [
       {
-        label: 'Supernet.org',
+        label: 'Fair-Exchange.org',
         click () {
           if (process.platform === 'linux') {
             require('child_process').exec('xdg-open http://support.supernet.org');
@@ -114,9 +114,9 @@ const template = [
         label: 'Github',
         click () {
           if (process.platform === 'linux') {
-            require('child_process').exec('xdg-open https://github.com/SuperNETorg/iguana/issues');
+            require('child_process').exec('xdg-open https://github.com/Fair-Exchange/iguana/issues');
           } else {
-            shell.openExternal('https://github.com/SuperNETorg/iguana/issues');
+            shell.openExternal('https://github.com/Fair-Exchange/iguana/issues');
           }
         }
       }

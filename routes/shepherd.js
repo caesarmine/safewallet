@@ -28,6 +28,7 @@ shepherd.setconf = require('../private/setconf.js');
 shepherd.nativeCoind = require('./nativeCoind.js');
 shepherd.nativeCoindList = {};
 shepherd.assetChainPorts = require('./ports.js');
+shepherd.assetChainPortsDefault = require('./ports.js');
 shepherd._appConfig = require('./appConfig.js');
 
 shepherd.coindInstanceRegistry = {};
@@ -48,8 +49,9 @@ shepherd.mmPublic = {
   isAuth: false,
   rates: {},
   prices: [],
-  coinsHelper: [],
+  coinsHelper: {},
   stats: [],
+  electrumServersList: {},
 };
 
 // spv vars and libs
@@ -70,7 +72,7 @@ shepherd.appConfig = shepherd._appConfig.config;
 // core
 shepherd = require('./shepherd/paths.js')(shepherd);
 
-shepherd.pathsAgama();
+shepherd.pathsSafewallet();
 
 // core
 shepherd = require('./shepherd/log.js')(shepherd);
@@ -82,7 +84,7 @@ shepherd.pathsDaemons();
 
 shepherd.appConfigSchema = shepherd._appConfig.schema;
 shepherd.defaultAppConfig = Object.assign({}, shepherd.appConfig);
-shepherd.kmdMainPassiveMode = false;
+shepherd.safeMainPassiveMode = false;
 
 // spv
 shepherd = require('./shepherd/electrum/network.js')(shepherd);
@@ -102,6 +104,7 @@ shepherd = require('./shepherd/electrum/estimate.js')(shepherd);
 shepherd = require('./shepherd/dex/coind.js')(shepherd);
 shepherd = require('./shepherd/dex/mmControl.js')(shepherd);
 shepherd = require('./shepherd/dex/mmRequest.js')(shepherd);
+shepherd = require('./shepherd/dex/electrumServersList.js')(shepherd);
 
 // core
 shepherd = require('./shepherd/addCoinShortcuts.js')(shepherd);
@@ -126,11 +129,14 @@ shepherd = require('./shepherd/auth.js')(shepherd);
 shepherd = require('./shepherd/coins.js')(shepherd);
 shepherd = require('./shepherd/coindWalletKeys.js')(shepherd);
 
+// explorer
+// shepherd = require('./shepherd/explorer/overview.js')(shepherd);
+
 shepherd.printDirs();
 
 // default route
 shepherd.get('/', (req, res, next) => {
-  res.send('Agama app server');
+  res.send('Safewallet app server');
 });
 
 // expose sockets obj

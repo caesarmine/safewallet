@@ -10,24 +10,24 @@ module.exports = (shepherd) => {
     let _location;
 
     if (shepherd.os.platform() === 'darwin') {
-      shepherd.komodoDir = shepherd.appConfig.dataDir.length ? shepherd.appConfig.dataDir : `${process.env.HOME}/Library/Application Support/Komodo`;
+      shepherd.safecoinDir = shepherd.appConfig.dataDir.length ? shepherd.appConfig.dataDir : `${process.env.HOME}/Library/Application Support/Safecoin`;
     }
 
     if (shepherd.os.platform() === 'linux') {
-      shepherd.komodoDir = shepherd.appConfig.dataDir.length ? shepherd.appConfig.dataDir : `${process.env.HOME}/.komodo`;
+      shepherd.safecoinDir = shepherd.appConfig.dataDir.length ? shepherd.appConfig.dataDir : `${process.env.HOME}/.safecoin`;
     }
 
     if (shepherd.os.platform() === 'win32') {
-      shepherd.komodoDir = shepherd.appConfig.dataDir.length ? shepherd.appConfig.dataDir : `${process.env.APPDATA}/Komodo`;
-      shepherd.komodoDir = shepherd.path.normalize(shepherd.komodoDir);
+      shepherd.safecoinDir = shepherd.appConfig.dataDir.length ? shepherd.appConfig.dataDir : `${process.env.APPDATA}/Safecoin`;
+      shepherd.safecoinDir = shepherd.path.normalize(shepherd.safecoinDir);
     }
 
-    if (_herd === 'komodo') {
-      _location = shepherd.komodoDir;
+    if (_herd === 'safecoin') {
+      _location = shepherd.safecoinDir;
     }
 
     if (_ac) {
-      _location = `${shepherd.komodoDir}/${_ac}`;
+      _location = `${shepherd.safecoinDir}/${_ac}`;
 
       if (_ac === 'CHIPS') {
         _location = shepherd.chipsDir;
@@ -53,8 +53,8 @@ module.exports = (shepherd) => {
   });
 
   shepherd.get('/coind/stdout', (req, res) => {
-    const _daemonName = req.query.chain !== 'komodod' ? req.query.chain : 'komodod';
-    const _daemonLogName = `${shepherd.agamaDir}/${_daemonName}.log`;
+    const _daemonName = req.query.chain !== 'safecoind' ? req.query.chain : 'safecoind';
+    const _daemonLogName = `${shepherd.safewalletDir}/${_daemonName}.log`;
 
     shepherd.readDebugLog(_daemonLogName, 'all')
     .then((result) => {

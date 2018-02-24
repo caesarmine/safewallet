@@ -1,20 +1,23 @@
+const fs = require('fs-extra');
+const os = require('os');
+
 module.exports = (shepherd) => {
   shepherd.getConf = (chain) => {
-    let _confLocation = chain === 'komodod' ? `${shepherd.komodoDir}/komodo.conf` : `${shepherd.komodoDir}/${chain}/${chain}.conf`;
+    let _confLocation = chain === 'safecoind' ? `${shepherd.safecoinDir}/safecoin.conf` : `${shepherd.safecoinDir}/${chain}/${chain}.conf`;
     _confLocation = chain === 'CHIPS' ? `${shepherd.chipsDir}/chips.conf` : _confLocation;
 
     // any coind
     if (chain) {
       if (shepherd.nativeCoindList[chain.toLowerCase()]) {
-        const _osHome = shepherd.os.platform === 'win32' ? process.env.APPDATA : process.env.HOME;
+        const _osHome = os.platform === 'win32' ? process.env.APPDATA : process.env.HOME;
         let coindDebugLogLocation = `${_osHome}/.${shepherd.nativeCoindList[chain.toLowerCase()].bin.toLowerCase()}/debug.log`;
 
         _confLocation = `${_osHome}/.${shepherd.nativeCoindList[chain.toLowerCase()].bin.toLowerCase()}/${shepherd.nativeCoindList[chain.toLowerCase()].bin.toLowerCase()}.conf`;
       }
 
-      if (shepherd.fs.existsSync(_confLocation)) {
+      if (fs.existsSync(_confLocation)) {
         let _port = shepherd.assetChainPorts[chain];
-        const _rpcConf = shepherd.fs.readFileSync(_confLocation, 'utf8');
+        const _rpcConf = fs.readFileSync(_confLocation, 'utf8');
 
         // any coind
         if (shepherd.nativeCoindList[chain.toLowerCase()]) {
@@ -41,7 +44,7 @@ module.exports = (shepherd) => {
           if (shepherd.nativeCoindList[chain.toLowerCase()]) {
             shepherd.rpcConf[chain] = parsedRpcConfig;
           } else {
-            shepherd.rpcConf[chain === 'komodod' ? 'KMD' : chain] = parsedRpcConfig;
+            shepherd.rpcConf[chain === 'safecoind' ? 'SAFE' : chain] = parsedRpcConfig;
           }
         } else {
           shepherd.log(`${_confLocation} is empty`);
@@ -73,19 +76,19 @@ module.exports = (shepherd) => {
       res.end(JSON.stringify(errorObj));
     } else {
       const _mode = req.body.payload.mode === 'passthru' ? 'passthru' : 'default';
-      const _chain = req.body.payload.chain === 'KMD' ? null : req.body.payload.chain;
+      const _chain = req.body.payload.chain === 'SAFE' ? null : req.body.payload.chain;
       const _params = req.body.payload.params ? ` ${req.body.payload.params}` : '';
       let _cmd = req.body.payload.cmd;
 
       if (!shepherd.rpcConf[_chain]) {
-        shepherd.getConf(req.body.payload.chain === 'KMD' || !req.body.payload.chain && shepherd.kmdMainPassiveMode ? 'komodod' : req.body.payload.chain);
+        shepherd.getConf(req.body.payload.chain === 'SAFE' || !req.body.payload.chain && shepherd.safeMainPassiveMode ? 'safecoind' : req.body.payload.chain);
       }
 
       if (_mode === 'default') {
         if (_cmd === 'debug' &&
             _chain !== 'CHIPS') {
           if (shepherd.nativeCoindList[_chain.toLowerCase()]) {
-            const _osHome = shepherd.os.platform === 'win32' ? process.env.APPDATA : process.env.HOME;
+            const _osHome = os.platform === 'win32' ? process.env.APPDATA : process.env.HOME;
             let coindDebugLogLocation;
 
             if (_chain === 'CHIPS') {
@@ -170,7 +173,7 @@ module.exports = (shepherd) => {
           }
         }
       } else {
-        let _coindCliBin = shepherd.komodocliBin;
+        let _coindCliBin = shepherd.safecoincliBin;
 
         if (shepherd.nativeCoindList &&
             _chain &&
@@ -208,7 +211,7 @@ module.exports = (shepherd) => {
           }
 
           res.end(JSON.stringify(responseObj));
-          shepherd.killRogueProcess('komodo-cli');
+          shepherd.killRogueProcess('safecoin-cli');
         });
       }
     }

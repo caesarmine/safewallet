@@ -1,7 +1,7 @@
 module.exports = (shepherd) => {
   shepherd.startSPV = (coin) => {
-    if (coin === 'KMD+REVS+JUMBLR') {
-      shepherd.addElectrumCoin('KMD');
+    if (coin === 'SAFE+REVS+JUMBLR') {
+      shepherd.addElectrumCoin('SAFE');
       shepherd.addElectrumCoin('REVS');
       shepherd.addElectrumCoin('JUMBLR');
     } else {
@@ -9,28 +9,28 @@ module.exports = (shepherd) => {
     }
   }
 
-  shepherd.startKMDNative = (selection, isManual) => {
+  shepherd.startSAFENative = (selection, isManual) => {
     if (isManual) {
-      shepherd.kmdMainPassiveMode = true;
+      shepherd.safeMainPassiveMode = true;
     }
 
-    if (selection === 'KMD') {
+    if (selection === 'SAFE') {
       const herdData = {
-        'ac_name': 'komodod',
+        'ac_name': 'safecoind',
         'ac_options': [
           '-daemon=0',
-          '-addnode=78.47.196.146',
+          '-addnode=35.231.110.175',
         ],
       };
 
       const options = {
-        url: `http://127.0.0.1:${shepherd.appConfig.agamaPort}/shepherd/herd`,
+        url: `http://127.0.0.1:${shepherd.appConfig.safewalletPort}/shepherd/herd`,
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          herd: 'komodod',
+          herd: 'safecoind',
           options: herdData,
         })
       };
@@ -46,10 +46,10 @@ module.exports = (shepherd) => {
       });
     } else {
       const herdData = [{
-        'ac_name': 'komodod',
+        'ac_name': 'safecoind',
         'ac_options': [
           '-daemon=0',
-          '-addnode=78.47.196.146',
+          '-addnode=35.231.110.175',
         ]
       }, {
         'ac_name': 'REVS',
@@ -57,7 +57,7 @@ module.exports = (shepherd) => {
           '-daemon=0',
           '-server',
           `-ac_name=REVS`,
-          '-addnode=78.47.196.146',
+          '-addnode=35.231.110.175',
           '-ac_supply=1300000'
         ]
       }, {
@@ -66,7 +66,7 @@ module.exports = (shepherd) => {
           '-daemon=0',
           '-server',
           `-ac_name=JUMBLR`,
-          '-addnode=78.47.196.146',
+          '-addnode=35.231.110.175',
           '-ac_supply=999999'
         ]
       }];
@@ -74,13 +74,13 @@ module.exports = (shepherd) => {
       for (let i = 0; i < herdData.length; i++) {
         setTimeout(() => {
           const options = {
-            url: `http://127.0.0.1:${shepherd.appConfig.agamaPort}/shepherd/herd`,
+            url: `http://127.0.0.1:${shepherd.appConfig.safewalletPort}/shepherd/herd`,
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              herd: 'komodod',
+              herd: 'safecoind',
               options: herdData[i],
             })
           };

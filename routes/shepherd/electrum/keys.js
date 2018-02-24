@@ -96,7 +96,7 @@ module.exports = (shepherd) => {
     const bip39 = require('bip39'); // npm i -S bip39
     const crypto = require('crypto');
     const seed = bip39.mnemonicToSeed(req.body.seed);
-    const hdMaster = shepherd.bitcoinJS.HDNode.fromSeedBuffer(seed, shepherd.electrumJSNetworks.komodo); // seed from above
+    const hdMaster = shepherd.bitcoinJS.HDNode.fromSeedBuffer(seed, shepherd.electrumJSNetworks.safecoin); // seed from above
     const matchPattern = req.body.match;
     const _defaultAddressDepth = req.body.addressdepth;
     const _defaultAccountCount = req.body.accounts;
@@ -158,8 +158,8 @@ module.exports = (shepherd) => {
 
     res.end(JSON.stringify(successObj));
 
-    console.log(shepherd.bitcoinJS.networks.komodo);
-    const hdMaster = shepherd.bitcoinJS.HDNode.fromSeedBuffer(seed, shepherd.electrumJSNetworks.komodo); // seed from above
+    console.log(shepherd.bitcoinJS.networks.safecoin);
+    const hdMaster = shepherd.bitcoinJS.HDNode.fromSeedBuffer(seed, shepherd.electrumJSNetworks.safecoin); // seed from above
 
     const key1 = hdMaster.derivePath("m/44'/141'/0'/0/0");
     const key2 = hdMaster.derivePath('m/1');
@@ -169,7 +169,7 @@ module.exports = (shepherd) => {
     console.log(key1.keyPair.getAddress());
     console.log(key2.keyPair.toWIF());
 
-    const hdnode = shepherd.bitcoinJS.HDNode.fromSeedBuffer(seed, shepherd.electrumJSNetworks.komodo).deriveHardened(0).derive(0).derive(1);
+    const hdnode = shepherd.bitcoinJS.HDNode.fromSeedBuffer(seed, shepherd.electrumJSNetworks.safecoin).deriveHardened(0).derive(0).derive(1);
     console.log(`address: ${hdnode.getAddress()}`);
     console.log(`priv (WIF): ${hdnode.keyPair.toWIF()}`);
   });*/

@@ -3,20 +3,20 @@ const fixPath = require('fix-path');
 const os = require('os');
 
 module.exports = (shepherd) => {
-  shepherd.pathsAgama = () => {
+  shepherd.pathsSafewallet = () => {
     switch (os.platform()) {
       case 'darwin':
         fixPath();
-        shepherd.agamaDir = `${process.env.HOME}/Library/Application Support/Agama`;
+        shepherd.safewalletDir = `${process.env.HOME}/Library/Application Support/Safewallet`;
         break;
 
       case 'linux':
-        shepherd.agamaDir = `${process.env.HOME}/.agama`;
+        shepherd.safewalletDir = `${process.env.HOME}/.safewallet`;
         break;
 
       case 'win32':
-        shepherd.agamaDir = `${process.env.APPDATA}/Agama`;
-        shepherd.agamaDir = path.normalize(shepherd.agamaDir);
+        shepherd.safewalletDir = `${process.env.APPDATA}/Safewallet`;
+        shepherd.safewalletDir = path.normalize(shepherd.safewalletDir);
         break;
     }
   }
@@ -25,10 +25,10 @@ module.exports = (shepherd) => {
     switch (os.platform()) {
       case 'darwin':
         fixPath();
-        shepherd.agamaTestDir = `${process.env.HOME}/Library/Application Support/Agama/test`,
-        shepherd.komododBin = path.join(__dirname, '../../assets/bin/osx/komodod'),
-        shepherd.komodocliBin = path.join(__dirname, '../../assets/bin/osx/komodo-cli'),
-        shepherd.komodoDir = shepherd.appConfig.dataDir.length ? shepherd.appConfig.dataDir : `${process.env.HOME}/Library/Application Support/Komodo`,
+        shepherd.safewalletTestDir = `${process.env.HOME}/Library/Application Support/Safewallet/test`,
+        shepherd.safecoindBin = path.join(__dirname, '../../assets/bin/osx/safecoind'),
+        shepherd.safecoincliBin = path.join(__dirname, '../../assets/bin/osx/safecoin-cli'),
+        shepherd.safecoinDir = shepherd.appConfig.dataDir.length ? shepherd.appConfig.dataDir : `${process.env.HOME}/Library/Application Support/Safecoin`,
         shepherd.zcashdBin = '/Applications/ZCashSwingWalletUI.app/Contents/MacOS/zcashd',
         shepherd.zcashcliBin = '/Applications/ZCashSwingWalletUI.app/Contents/MacOS/zcash-cli',
         shepherd.zcashDir = `${process.env.HOME}/Library/Application Support/Zcash`,
@@ -41,10 +41,10 @@ module.exports = (shepherd) => {
         break;
 
       case 'linux':
-        shepherd.agamaTestDir = `${process.env.HOME}/.agama/test`,
-        shepherd.komododBin = path.join(__dirname, '../../assets/bin/linux64/komodod'),
-        shepherd.komodocliBin = path.join(__dirname, '../../assets/bin/linux64/komodo-cli'),
-        shepherd.komodoDir = shepherd.appConfig.dataDir.length ? shepherd.appConfig.dataDir : `${process.env.HOME}/.komodo`,
+        shepherd.safewalletTestDir = `${process.env.HOME}/.safewallet/test`,
+        shepherd.safecoindBin = path.join(__dirname, '../../assets/bin/linux64/safecoind'),
+        shepherd.safecoincliBin = path.join(__dirname, '../../assets/bin/linux64/safecoin-cli'),
+        shepherd.safecoinDir = shepherd.appConfig.dataDir.length ? shepherd.appConfig.dataDir : `${process.env.HOME}/.safecoin`,
         shepherd.zcashParamsDir = `${process.env.HOME}/.zcash-params`,
         shepherd.chipsBin = path.join(__dirname, '../../assets/bin/linux64/chipsd'),
         shepherd.chipscliBin = path.join(__dirname, '../../assets/bin/linux64/chips-cli'),
@@ -54,14 +54,14 @@ module.exports = (shepherd) => {
         break;
 
       case 'win32':
-        shepherd.agamaTestDir = `${process.env.APPDATA}/Agama/test`;
-        shepherd.agamaTestDir = path.normalize(shepherd.agamaTestDir);
-        shepherd.komododBin = path.join(__dirname, '../../assets/bin/win64/komodod.exe'),
-        shepherd.komododBin = path.normalize(shepherd.komododBin),
-        shepherd.komodocliBin = path.join(__dirname, '../../assets/bin/win64/komodo-cli.exe'),
-        shepherd.komodocliBin = path.normalize(shepherd.komodocliBin),
-        shepherd.komodoDir = shepherd.appConfig.dataDir.length ? shepherd.appConfig.dataDir : `${process.env.APPDATA}/Komodo`,
-        shepherd.komodoDir = path.normalize(shepherd.komodoDir);
+        shepherd.safewalletTestDir = `${process.env.APPDATA}/Safewallet/test`;
+        shepherd.safewalletTestDir = path.normalize(shepherd.safewalletTestDir);
+        shepherd.safecoindBin = path.join(__dirname, '../../assets/bin/win64/safecoind.exe'),
+        shepherd.safecoindBin = path.normalize(shepherd.safecoindBin),
+        shepherd.safecoincliBin = path.join(__dirname, '../../assets/bin/win64/safecoin-cli.exe'),
+        shepherd.safecoincliBin = path.normalize(shepherd.safecoincliBin),
+        shepherd.safecoinDir = shepherd.appConfig.dataDir.length ? shepherd.appConfig.dataDir : `${process.env.APPDATA}/Safecoin`,
+        shepherd.safecoinDir = path.normalize(shepherd.safecoinDir);
         shepherd.chipsBin = path.join(__dirname, '../../assets/bin/win64/chipsd.exe'),
         shepherd.chipsBin = path.normalize(shepherd.chipsBin),
         shepherd.chipscliBin = path.join(__dirname, '../../assets/bin/win64/chips-cli.exe'),

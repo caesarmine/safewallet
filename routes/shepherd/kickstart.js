@@ -18,7 +18,7 @@ module.exports = (shepherd) => {
 
       res.end(JSON.stringify(errorObj));
     } else {
-      const _location = path.join(_coin === 'KMD' ? shepherd.komodoDir : `${shepherd.komodoDir}/${_coin}`);
+      const _location = path.join(_coin === 'SAFE' ? shepherd.safecoinDir : `${shepherd.safecoinDir}/${_coin}`);
 
       if (fs.existsSync(_location)) {
         const items = fs.readdirSync(_location);

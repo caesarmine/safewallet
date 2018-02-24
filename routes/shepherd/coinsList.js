@@ -4,8 +4,8 @@ module.exports = (shepherd) => {
    *
    */
   shepherd.get('/coinslist', (req, res, next) => {
-    if (shepherd.fs.existsSync(`${shepherd.agamaDir}/shepherd/coinslist.json`)) {
-      shepherd.fs.readFile(`${shepherd.agamaDir}/shepherd/coinslist.json`, 'utf8', (err, data) => {
+    if (shepherd.fs.existsSync(`${shepherd.safewalletDir}/shepherd/coinslist.json`)) {
+      shepherd.fs.readFile(`${shepherd.safewalletDir}/shepherd/coinslist.json`, 'utf8', (err, data) => {
         if (err) {
           const errorObj = {
             msg: 'error',
@@ -47,7 +47,7 @@ module.exports = (shepherd) => {
 
       res.end(JSON.stringify(errorObj));
     } else {
-      shepherd.fs.writeFile(`${shepherd.agamaDir}/shepherd/coinslist.json`, JSON.stringify(_payload), (err) => {
+      shepherd.fs.writeFile(`${shepherd.safewalletDir}/shepherd/coinslist.json`, JSON.stringify(_payload), (err) => {
         if (err) {
           const errorObj = {
             msg: 'error',

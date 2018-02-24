@@ -16,7 +16,7 @@ module.exports = (shepherd) => {
   shepherd.scanNativeCoindBins = () => {
     let nativeCoindList = {};
 
-    // check if coind bins are present in agama
+    // check if coind bins are present in safewallet
     for (let key in shepherd.nativeCoind) {
       nativeCoindList[key] = {
         name: shepherd.nativeCoind[key].name,

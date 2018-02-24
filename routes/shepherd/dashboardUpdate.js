@@ -254,7 +254,7 @@ module.exports = (shepherd) => {
         }
 
         const options = {
-          url: `http://127.0.0.1:${shepherd.appConfig.agamaPort}/shepherd/cli`,
+          url: `http://127.0.0.1:${shepherd.appConfig.safewalletPort}/shepherd/cli`,
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

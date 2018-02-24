@@ -1,8 +1,10 @@
 const assetChainPorts = {
-  'komodod': '7771',
+  'safecoind': '8771',
+  'markermaker': '7783',
   'CHIPS': '57776',
   'SUPERNET': '11341',
   'REVS': '10196',
+  'KMD': '7771',
   'MNZ': '14337',
   'WLC': '12167',
   'PANGEA': '14068',

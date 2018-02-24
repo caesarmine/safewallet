@@ -8,7 +8,7 @@ module.exports = (shepherd) => {
   }
 
   shepherd.addElectrumCoin = (coin) => {
-    const servers = shepherd.electrumServers[coin === 'KMD' ? 'komodo' : coin.toLowerCase()].serverList;
+    const servers = shepherd.electrumServers[coin === 'SAFE' ? 'safecoin' : coin.toLowerCase()].serverList;
     // select random server
     const getRandomIntInclusive = (min, max) => {
       min = Math.ceil(min);

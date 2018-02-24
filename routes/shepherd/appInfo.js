@@ -41,11 +41,11 @@ module.exports = (shepherd) => {
     const sysInfo = shepherd.SystemInfo();
     const releaseInfo = shepherd.appBasicInfo;
     const dirs = {
-      agamaDir: shepherd.agamaDir,
-      komodoDir: shepherd.komodoDir,
-      komododBin: shepherd.komododBin,
-      configLocation: `${shepherd.agamaDir}/config.json`,
-      cacheLocation: `${shepherd.agamaDir}/shepherd`,
+      safewalletDir: shepherd.safewalletDir,
+      safecoinDir: shepherd.safecoinDir,
+      safecoindBin: shepherd.safecoindBin,
+      configLocation: `${shepherd.safewalletDir}/config.json`,
+      cacheLocation: `${shepherd.safewalletDir}/shepherd`,
     };
 
     return {

@@ -9,7 +9,7 @@ module.exports = (shepherd) => {
     const chain = req.query.chain;
 
     // ref: https://gist.github.com/kendricktan/1e62495150ad236b38616d733aac4eb9
-    let _walletDatLocation = chain === 'komodo' || chain === 'null' ? `${shepherd.komodoDir}/wallet.dat` : `${shepherd.komodoDir}/${chain}/wallet.dat`;
+    let _walletDatLocation = chain === 'safecoin' || chain === 'null' ? `${shepherd.safecoinDir}/wallet.dat` : `${shepherd.safecoinDir}/${chain}/wallet.dat`;
     _walletDatLocation = chain === 'CHIPS' ? `${shepherd.chipsDir}/wallet.dat` : _walletDatLocation;
 
     try {
@@ -59,7 +59,7 @@ module.exports = (shepherd) => {
                   const keyObj = wif.decode(key);
                   const wifKey = wif.encode(keyObj);
 
-                  const keyPair = shepherd.bitcoinJS.ECPair.fromWIF(wifKey, shepherd.electrumJSNetworks.komodo);
+                  const keyPair = shepherd.bitcoinJS.ECPair.fromWIF(wifKey, shepherd.electrumJSNetworks.safecoin);
                   const _keyPair = {
                     priv: keyPair.toWIF(),
                     pub: keyPair.getAddress(),

@@ -83,9 +83,9 @@ networks.zcoin = {
     dustThreshold: 1000, // https://github.com/zcoinofficial/zcoin/blob/f755f95a036eedfef7c96bcfb6769cb79278939f/src/main.h#L59
 };
 
-// https://raw.githubusercontent.com/jl777/komodo/beta/src/chainparams.cpp
-networks.komodo = {
-    messagePrefix: '\x19Komodo Signed Message:\n',
+// https://raw.githubusercontent.com/jl777/safecoin/beta/src/chainparams.cpp
+networks.safecoin = {
+    messagePrefix: '\x19Safecoin Signed Message:\n',
     bip32: {
         public: 0x0488b21e,
         private: 0x0488ade4,

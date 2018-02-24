@@ -62,13 +62,24 @@ module.exports = (shepherd) => {
 
   shepherd.getCoinsHelper = () => {
     const defaultCoinsListFile = path.join(__dirname, '../dex/coins.json');
-    shepherd.mmPublic.coinsHelper = fs.readJsonSync(defaultCoinsListFile, { throws: false });
+    const _coins = fs.readJsonSync(defaultCoinsListFile, { throws: false });
+    let coins = {};
+
+    for (let i = 0; i < _coins.length; i++) {
+      coins[_coins[i].coin] = _coins[i];
+    }
+    coins.MNZ.name = 'Monaize';
+    coins.SAFE =  { coin: 'SAFE', name: 'Safecoin' };
+    coins.BTC = { coin: 'BTC', name: 'Bitcoin' };
+    coins.IOP.name = 'Internet of People';
+
+    shepherd.mmPublic.coinsHelper = coins;
   }
 
   shepherd.getRates = () => {
     function _getRates() {
       const options = {
-        url: `https://min-api.cryptocompare.com/data/price?fsym=KMD&tsyms=BTC,USD`,
+        url: `https://min-api.cryptocompare.com/data/price?fsym=SAFE&tsyms=BTC,USD`,
         method: 'GET',
       };
 
@@ -82,7 +93,7 @@ module.exports = (shepherd) => {
           shepherd.log(`rates ${body}`);
           shepherd.mmPublic.rates = _parsedBody;
         } else {
-          shepherd.log(`mm unable to retrieve KMD/BTC,USD rate`);
+          shepherd.log(`mm unable to retrieve SAFE/BTC,USD rate`);
         }
       });
     }
@@ -154,7 +165,7 @@ module.exports = (shepherd) => {
         // Status is 'open' if currently in use or 'closed' if available
         if (status === 'closed') {
           // add BarterDEX check
-          const _coinsListFile = shepherd.agamaDir + '/coins.json';
+          const _coinsListFile = shepherd.safewalletDir + '/coins.json';
 
           fs.pathExists(_coinsListFile, (err, exists) => {
             if (exists) {
@@ -165,7 +176,7 @@ module.exports = (shepherd) => {
               shepherd.log(`dex coins file doesnt exist`);
               fs.copy(defaultCoinsListFile, _coinsListFile)
               .then(() => {
-                shepherd.log(`dex coins file copied to ${shepherd.agamaDir}`);
+                shepherd.log(`dex coins file copied to ${shepherd.safewalletDir}`);
                 data.coinslist = fs.readJsonSync(_coinsListFile, { throws: false });
                 shepherd.execMarketMaker(data);
               })
@@ -187,7 +198,7 @@ module.exports = (shepherd) => {
 
   shepherd.execMarketMaker = (data) => {
     const _customParam = {
-      gui: 'agama-buildog',
+      gui: 'safewallet-buildog',
       client: 1,
       profitmargin: 0.01, // (?)
       userhome: `${process.env.HOME}`,
@@ -214,11 +225,11 @@ module.exports = (shepherd) => {
       params = `"${params}"`;
     }
 
-    const logStream = fs.createWriteStream(`${shepherd.agamaDir}/logFile.log`, { flags: 'a' });
+    const logStream = fs.createWriteStream(`${shepherd.safewalletDir}/logFile.log`, { flags: 'a' });
 
     shepherd.log('starting mm');
     const mmid = exec(`${shepherd.mmBin} ${params}`, {
-      cwd: shepherd.agamaDir,
+      cwd: shepherd.safewalletDir,
       maxBuffer: 1024 * 50000 // 50 mb
     }, function(error, stdout, stderr) {
       // console.log(`stdout: ${stdout}`);

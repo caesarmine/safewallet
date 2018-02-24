@@ -45,12 +45,12 @@ module.exports = (shepherd) => {
                           _atLeastOneDecodeTxFailed = true;
                           resolve('cant decode tx');
                         } else {
-                          if (network === 'komodo') {
+                          if (network === 'safecoin') {
                             let interest = 0;
 
                             if (Number(_utxoItem.value) * 0.00000001 >= 10 &&
                                 decodedTx.format.locktime > 0) {
-                              interest = shepherd.kmdCalcInterest(decodedTx.format.locktime, _utxoItem.value);
+                              interest = shepherd.safeCalcInterest(decodedTx.format.locktime, _utxoItem.value);
                             }
 
                             let _resolveObj = {

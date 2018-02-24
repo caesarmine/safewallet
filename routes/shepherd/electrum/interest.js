@@ -1,5 +1,5 @@
 module.exports = (shepherd) => {
-  shepherd.kmdCalcInterest = (locktime, value) => { // value in sats
+  shepherd.safeCalcInterest = (locktime, value) => { // value in sats
     const timestampDiff = Math.floor(Date.now() / 1000) - locktime - 777;
     const hoursPassed = Math.floor(timestampDiff / 3600);
     const minutesPassed = Math.floor((timestampDiff - (hoursPassed * 3600)) / 60);
@@ -7,7 +7,7 @@ module.exports = (shepherd) => {
     let timestampDiffMinutes = timestampDiff / 60;
     let interest = 0;
 
-    shepherd.log('kmdCalcInterest', true);
+    shepherd.log('safeCalcInterest', true);
     shepherd.log(`locktime ${locktime}`, true);
     shepherd.log(`minutes converted ${timestampDiffMinutes}`, true);
     shepherd.log(`passed ${hoursPassed}h ${minutesPassed}m ${secondsPassed}s`, true);

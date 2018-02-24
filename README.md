@@ -1,36 +1,23 @@
-# Agama Desktop App
-Desktop App for SuperNET DAPPs
+# Safewallet Desktop App
+Desktop App forked from SuperNet's Agama and FairExchange-GUI
 
 #### For Developers
-You must have `node.js` and `npm` installed on your machine.
+You must have `node.js` (v8.9 LTS works)  and `npm` installed on your machine.
 
-Clone Agama Desktop App with EasyDEX-GUI submodule
+Clone Safewallet Desktop App with FairExchange-GUI submodule
 ```shell
-1) git clone https://github.com/supernetorg/agama --recursive --branch pkg_automation_electrum --single-branch
-with this command you git clone agama - but explicitly just the pkg_automation_electrum branch (therefore --single-branch) which we also use for the release packages.
-2) cd agama && cd gui/EasyDEX-GUI/
-3) git checkout electrum && git pull origin electrum
-4) npm install && npm install webpack
-5) ./binary_artifacts.sh
-6) npm start in projects' root folder
-7) cd gui/EasyDEX-GUI/react/src
-8) npm start
+1) git clone https://github.com/safe-exchange/safewallet 
+2) cd safewallet && cd gui/FairExchange-GUI/
+3) npm install && npm install webpack
+4) cd ../ && ./binary_artifacts.sh
+5) npm start      (in project root folder)
+6) cd gui/FairExchange-GUI/react/src
+7) npm start    (npm install is sometimes required if npm start gives error)
 8) toggle dev and debug options in settings
 9) restart the app
-10) sync komodod and/or asset chains
+10) sync safecoind and/or asset chains
 
-You're ready to dev
-```
-
-Install Agama App
-```shell
-cd Agama
-npm install
-```
-
-Then start Agama App
-```shell
-npm start
+You are ready to dev
 ```
 
 ### Important dev notes
@@ -39,16 +26,19 @@ npm start
 In dev mode backend is configured to send/receive messages from/to http://127.0.0.1:3000 address. If you open it as http://localhost:3000 sockets server will reject any messages.
 
 #### Coin daemon binaries
-Run binary_artifacts.sh from under agama folder you cloned previously. The script will fetch
+Run binary_artifacts.sh from under safewallet folder you cloned previously. The script will fetch
 
 #### For end users
-The instructions to make production build of Agama App will be updated soon.
+The instructions to make production build of Safewallet App will be updated soon.
 
 To build the production ready app, install `electron-packager` and `electron-prebuilt` packages from npm
 ```shell
 npm install electron-packager -g
-npm install electron-prebuilt -g
 ```
+
+Note:  Currently, the Safecoin Client executables must be replaced into the assets/bin/ folder their respective OS.
+                *This manual process will be automated shortly as we develop our fork further
+
 
 #### **Build the Wallet-App**
 Refer to the original [electron-packager](https://github.com/electron-userland/electron-packager) repository for more detailed information.
@@ -57,7 +47,7 @@ Refer to the original [electron-packager](https://github.com/electron-userland/e
 Change directory to iguana and execute the following command to build the Linux app
 ```shell
 cd iguana
-electron-packager . --platform=linux --arch=x64 --icon=assets/icons/agama_icons/128x128.png --out=build/ --buildVersion=VERSION_NUMBER_HERE --ignore=assets/bin/win64 --ignore=assets/bin/osx --overwrite
+electron-packager . --platform=linux --arch=x64 --icon=assets/icons/safewallet_icons/128x128.png --out=build/ --buildVersion=VERSION_NUMBER_HERE --ignore=assets/bin/win64 --ignore=assets/bin/osx --overwrite
 ```
 change architecture build parameter to ```--arch=x32``` for 32 bit build
 
@@ -65,27 +55,30 @@ change architecture build parameter to ```--arch=x32``` for 32 bit build
 Change directory to iguana and execute the following command to build the OSX app
 ```shell
 cd iguana
-electron-packager . --platform=darwin --arch=x64 --icon=assets/icons/agama_icons/agama_app_icon.icns --out=build/ --buildVersion=VERSION_NUMBER_HERE --ignore=assets/bin/win64 --ignore=assets/bin/linux64 --overwrite
+electron-packager . --platform=darwin --arch=x64 --icon=assets/icons/safewallet_icons/safewallet_app_icon.icns --out=build/ --buildVersion=VERSION_NUMBER_HERE --ignore=assets/bin/win64 --ignore=assets/bin/linux64 --overwrite
 ```
 
 ##### Windows
 Change directory to iguana and execute the following command to build the Windows app
 ```shell
 dir iguana
-electron-packager . --platform=win32 --arch=x64 --icon=assets/icons/agama_icons/agama_app_icon.ico --out=build/ --buildVersion=VERSION_NUMBER_HERE --ignore=assets/bin/osx --ignore=assets/bin/linux64 --overwrite
+electron-packager . --platform=win32 --arch=x64 --icon=assets/icons/safewallet_icons/safewallet_app_icon.ico --out=build/ --buildVersion=VERSION_NUMBER_HERE --ignore=assets/bin/osx --ignore=assets/bin/linux64 --overwrite
 
 # If generating 32bit desktop package
-electron-packager . --platform=win32 --arch=ia32 --icon=assets/icons/agama_icons/agama_app_icon.ico --out=build/ --buildVersion=VERSION_NUMBER_HERE --ignore=assets/bin/osx --ignore=assets/bin/linux64 --overwrite
+electron-packager . --platform=win32 --arch=ia32 --icon=assets/icons/safewallet_icons/safewallet_app_icon.ico --out=build/ --buildVersion=VERSION_NUMBER_HERE --ignore=assets/bin/osx --ignore=assets/bin/linux64 --overwrite
 
 # To build both x64 and x86 desktop package
-electron-packager . --platform=win32 --arch=all --icon=assets/icons/agama_icons/agama_app_icon.ico --out=build/ --buildVersion=VERSION_NUMBER_HERE --ignore=assets/bin/osx --ignore=assets/bin/linux64 --overwrite
+electron-packager . --platform=win32 --arch=all --icon=assets/icons/safewallet_icons/safewallet_app_icon.ico --out=build/ --buildVersion=VERSION_NUMBER_HERE --ignore=assets/bin/osx --ignore=assets/bin/linux64 --overwrite
 ```
 change architecture build parameter to ```--arch=x64``` for 64 bit build
 
 
+
 ## Troubleshooting Instructions
+
+### Remember if you are running the binary, you are not in DEV mode anymore and will need to toggle that off or it will not run
 
 ### Windows DLL issues
 On Windows it's noticed iguana.exe complains about `VCRUNTIME140D.DLL` and `ucrtbased.dll` file.
 
-Please see **windeps** directory and README file for instructions to install the required DLL files on Windows, and then try again running Agama App.
+Please see **windeps** directory and README file for instructions to install the required DLL files on Windows, and then try again running Safewallet App.

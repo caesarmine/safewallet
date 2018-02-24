@@ -11,7 +11,7 @@ module.exports = (shepherd) => {
     return localVersionFile;
   }
 
-  shepherd.createAgamaDirs = () => {
+  shepherd.createSafewalletDirs = () => {
     if (!_foldersInitRan) {
       const rootLocation = path.join(__dirname, '../../');
 
@@ -24,34 +24,34 @@ module.exports = (shepherd) => {
         }
       });
 
-      if (!fs.existsSync(shepherd.agamaDir)) {
-        fs.mkdirSync(shepherd.agamaDir);
+      if (!fs.existsSync(shepherd.safewalletDir)) {
+        fs.mkdirSync(shepherd.safewalletDir);
 
-        if (fs.existsSync(shepherd.agamaDir)) {
-          shepherd.log(`created agama folder at ${shepherd.agamaDir}`);
-          shepherd.writeLog(`created agama folder at ${shepherd.agamaDir}`);
+        if (fs.existsSync(shepherd.safewalletDir)) {
+          shepherd.log(`created safewallet folder at ${shepherd.safewalletDir}`);
+          shepherd.writeLog(`created safewallet folder at ${shepherd.safewalletDir}`);
         }
       } else {
-        shepherd.log('agama folder already exists');
+        shepherd.log('safewallet folder already exists');
       }
 
-      if (!fs.existsSync(`${shepherd.agamaDir}/shepherd`)) {
-        fs.mkdirSync(`${shepherd.agamaDir}/shepherd`);
+      if (!fs.existsSync(`${shepherd.safewalletDir}/shepherd`)) {
+        fs.mkdirSync(`${shepherd.safewalletDir}/shepherd`);
 
-        if (fs.existsSync(`${shepherd.agamaDir}/shepherd`)) {
-          shepherd.log(`created shepherd folder at ${shepherd.agamaDir}/shepherd`);
-          shepherd.writeLog(`create shepherd folder at ${shepherd.agamaDir}/shepherd`);
+        if (fs.existsSync(`${shepherd.safewalletDir}/shepherd`)) {
+          shepherd.log(`created shepherd folder at ${shepherd.safewalletDir}/shepherd`);
+          shepherd.writeLog(`create shepherd folder at ${shepherd.safewalletDir}/shepherd`);
         }
       } else {
-        shepherd.log('agama/shepherd folder already exists');
+        shepherd.log('safewallet/shepherd folder already exists');
       }
 
-      if (!fs.existsSync(`${shepherd.agamaDir}/shepherd/pin`)) {
-        fs.mkdirSync(`${shepherd.agamaDir}/shepherd/pin`);
+      if (!fs.existsSync(`${shepherd.safewalletDir}/shepherd/pin`)) {
+        fs.mkdirSync(`${shepherd.safewalletDir}/shepherd/pin`);
 
-        if (fs.existsSync(`${shepherd.agamaDir}/shepherd/pin`)) {
-          shepherd.log(`created pin folder at ${shepherd.agamaDir}/shepherd/pin`);
-          shepherd.writeLog(`create pin folder at ${shepherd.agamaDir}/shepherd/pin`);
+        if (fs.existsSync(`${shepherd.safewalletDir}/shepherd/pin`)) {
+          shepherd.log(`created pin folder at ${shepherd.safewalletDir}/shepherd/pin`);
+          shepherd.writeLog(`create pin folder at ${shepherd.safewalletDir}/shepherd/pin`);
         }
       } else {
         shepherd.log('shepherd/pin folder already exists');

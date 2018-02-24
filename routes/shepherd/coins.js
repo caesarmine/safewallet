@@ -15,7 +15,7 @@ module.exports = (shepherd) => {
     }
 
     for (let key in shepherd.coindInstanceRegistry) {
-      nativeCoindList.push(key === 'komodod' ? 'KMD' : key);
+      nativeCoindList.push(key === 'safecoind' ? 'SAFE' : key);
     }
 
     successObj = {
