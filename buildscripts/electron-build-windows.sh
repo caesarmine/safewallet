@@ -10,7 +10,7 @@ echo "Build script for Iguana application for Windows x64 platform."
 echo "Preparing electron package $SAFEWALLET_VERSION"
 
 electron-packager . --platform=win32 \
-  --arch=ia32 \
+  --arch=x64 \
   --icon=assets/icons/safewallet_app_icon.ico \
   --out=build/ \
   --buildVersion=$SAFEWALLET_VERSION \

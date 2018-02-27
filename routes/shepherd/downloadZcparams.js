@@ -1,18 +1,14 @@
 module.exports = (shepherd) => {
   shepherd.zcashParamsDownloadLinks = {
-    'safewallet.safecoinplatform.com': {
-      proving: 'https://safewallet.safecoinplatform.com/file/supernet/sprout-proving.key',
-      verifying: 'https://safewallet.safecoinplatform.com/file/supernet/sprout-verifying.key',
-    },
-    'safewallet-yq0ysrdtr.stackpathdns.com': {
-      proving: 'http://safewallet-yq0ysrdtr.stackpathdns.com/file/supernet/sprout-proving.key',
-      verifying: 'http://safewallet-yq0ysrdtr.stackpathdns.com/file/supernet/sprout-verifying.key',
-    },
     'zcash.dl.mercerweiss.com': {
       proving: 'https://zcash.dl.mercerweiss.com/sprout-proving.key',
       verifying: 'https://zcash.dl.mercerweiss.com/sprout-verifying.key',
     },
-  };
+    'ysrdtr.stackpathdns.com': {
+      proving: 'http://kmdwallet-yq0ysrdtr.stackpathdns.com/file/supernet/sprout-proving.key',
+      verifying: 'http://kmdwallet-yq0ysrdtr.stackpathdns.com/file/supernet/sprout-verifying.key',
+    },
+ };
 
   shepherd.zcashParamsExist = () => {
     let _checkList = {
