@@ -91,7 +91,7 @@ class WalletsTxInfo extends React.Component {
   }
 
   openExplorerWindow(txid) {
-    const url = `http://${this.props.ActiveCoin.coin}.explorer.supernet.org/tx/${txid}`;
+    const url = `http://${this.props.ActiveCoin.coin}.explorer.safecoin.org/tx/${txid}`;
     const remote = window.require('electron').remote;
     const BrowserWindow = remote.BrowserWindow;
 

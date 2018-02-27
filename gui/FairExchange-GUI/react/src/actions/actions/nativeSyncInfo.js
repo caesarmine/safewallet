@@ -33,7 +33,7 @@ export function getSyncInfoNativeSAFE(skipDebug, json, skipRemote) {
     // https://www.safe.host/
     return dispatch => {
       return fetch(
-        'https://safe.explorer.supernet.org/api/status?q=getInfo', {
+        'https://explorer.safecoin.org/api/status?q=getInfo', {
         method: 'GET',
       })
       .catch((error) => {
