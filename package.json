@@ -29,8 +29,8 @@
     "adm-zip": "^0.4.7",
     "arch": "^2.1.0",
     "bip39": "^2.4.0",
-      "bitcoinjs-lib": "^3.3.2",
-      "bitcoinjs-lib-zcash": "^3.3.2", 
+    "bitcoinjs-lib": "^3.3.2",
+    "bitcoinjs-lib-zcash": "^3.3.2",
     "bluebird": "^3.4.7",
     "body-parser": "^1.15.2",
     "buffer-reverse": "^1.0.1",
@@ -50,6 +50,7 @@
     "request": "^2.80.0",
     "sha256": "^0.2.0",
     "socket.io": "^1.7.3",
+    "webpack": "^4.0.1",
     "wif": "^2.0.6"
   }
 }
