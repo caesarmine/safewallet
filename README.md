@@ -36,9 +36,6 @@ To build the production ready app, install `electron-packager` and `electron-pre
 npm install electron-packager -g
 ```
 
-Note:  Currently, the Safecoin Client executables must be replaced into the assets/bin/ folder their respective OS.
-                *This manual process will be automated shortly as we develop our fork further
-
 
 #### **Build the Wallet-App**
 Refer to the original [electron-packager](https://github.com/electron-userland/electron-packager) repository for more detailed information.
