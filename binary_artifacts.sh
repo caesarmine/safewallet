@@ -10,7 +10,8 @@ cd assets
   rm -rvf artifacts.supernet.org
 echo
 echo Step: Cloning latest binaries for build
-wget --recursive --no-parent https://artifacts.supernet.org/latest/
+wget https://github.com/Fair-Exchange/bitcore-node-safecoin/releases/download/v0.01/artifacts.tar.gz
+tar zxf artifacts.tar.gz
 cd ..
 echo =========================================
 echo
@@ -19,7 +20,7 @@ echo =========================================
 echo Step: Permission +x for OSX binaries from artifacts to assets/bin/osx/
 echo
 rm assets/artifacts.supernet.org/latest/osx/iguana
-chmod +x assets/artifacts.supernet.org/latest/osx/komodo*
+chmod +x assets/artifacts.supernet.org/latest/osx/safecoin*
 
 mkdir assets/bin
 mv assets/artifacts.supernet.org/latest/osx assets/bin/osx
@@ -45,7 +46,7 @@ echo =========================================
 echo Step: Permissions +x for linux64 binaries from artifacts to assets/bin/linux64
 echo
 rm assets/artifacts.supernet.org/latest/linux/iguana
-chmod +x assets/artifacts.supernet.org/latest/linux/komodo*
+chmod +x assets/artifacts.supernet.org/latest/linux/safecoin*
 echo Moving Linux bins to assets/bin
 mv assets/artifacts.supernet.org/latest/linux assets/bin/linux64/
 echo
