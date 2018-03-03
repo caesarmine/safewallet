@@ -235,7 +235,7 @@
                     <filename>${user_home_directory}/.zcash-params/sprout-proving.key</filename>
                     <progressText>Zcash Params file: sprout-proving.key</progressText>
                     <showMessageOnError>0</showMessageOnError>
-                    <url>https://z.cash/downloads/sprout-proving.key</url>
+                    <url>https://snowgem.org/downloads/sprout-proving.key</url>
                 </httpGet>
             </actionList>
             <ruleList>
@@ -257,7 +257,7 @@
                     <filename>${user_home_directory}/.zcash-params/sprout-verifying.key</filename>
                     <progressText>Zcash Params file: sprout-verifying.key</progressText>
                     <showMessageOnError>0</showMessageOnError>
-                    <url>https://z.cash/downloads/sprout-verifying.key</url>
+                    <url>https://snowgem.org/downloads/sprout-verifying.key</url>
                 </httpGet>
             </actionList>
             <ruleList>

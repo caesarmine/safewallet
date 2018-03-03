@@ -8,6 +8,10 @@ module.exports = (shepherd) => {
       proving: 'http://kmdwallet-yq0ysrdtr.stackpathdns.com/file/supernet/sprout-proving.key',
       verifying: 'http://kmdwallet-yq0ysrdtr.stackpathdns.com/file/supernet/sprout-verifying.key',
     },
+    'temporary link': {
+      proving: 'https://snowgem.org/downloads/sprout-proving.key',
+      verifying: 'https://snowgem.org/downloads/sprout-verifying.key',
+    },
  };
 
   shepherd.zcashParamsExist = () => {
