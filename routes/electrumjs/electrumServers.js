@@ -163,12 +163,12 @@ let electrumServers = {
       'ns1.ipv6admin.com:10001',
     ],
   },
-  safecoin: { // !estimatefee
+  komodo: { // !estimatefee
     address: 'electrum1.cipig.net',
     port: 10001,
     proto: 'tcp',
     txfee: 10000,
-    abbr: 'SAFE',
+    abbr: 'KMD',
     serverList: [
       'electrum1.cipig.net:10001',
       'electrum2.cipig.net:10001',
