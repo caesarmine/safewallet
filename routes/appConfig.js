@@ -2,7 +2,6 @@ const appConfig = {
   config: { // default config
     host: '127.0.0.1',
       safewalletPort: 17777,
-      experimentalFeatures: false,
       dev: false,
     maxDescriptors: {
       darwin: 90000,
@@ -68,8 +67,8 @@ const appConfig = {
       type: 'boolean',
     },
     experimentalFeatures: {
-      display: false,
-      initDisplay: false,
+      display: true,
+      initDisplay: true,
       displayName: 'Enable experimental features',
       type: 'boolean',
     },

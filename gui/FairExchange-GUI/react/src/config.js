@@ -4,7 +4,7 @@ let _config = {
   iguanaCorePort: 7778,
   safewalletPort: 17777,
   enableCacheApi: true,
-  useBasiliskInstance: false,
+  useBasiliskInstance: true,
   openAlias: false,
   debug: true,
   defaultLang: 'EN',

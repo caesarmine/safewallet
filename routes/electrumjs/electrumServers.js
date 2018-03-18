@@ -153,6 +153,17 @@ let electrumServers = {
     ],
   },
   safecoin: { // !estimatefee
+    address: 'ns1.ipv6admin.com',
+    port: 10001,
+    proto: 'tcp',
+    txfee: 10000,
+    abbr: 'SAFE',
+    serverList: [
+      'ns1.ipv6admin.com:10001',
+      'ns1.ipv6admin.com:10001',
+    ],
+  },
+  safecoin: { // !estimatefee
     address: 'electrum1.cipig.net',
     port: 10001,
     proto: 'tcp',

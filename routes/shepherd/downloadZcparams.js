@@ -1,16 +1,16 @@
 module.exports = (shepherd) => {
   shepherd.zcashParamsDownloadLinks = {
-    'zcash.dl.mercerweiss.com': {
+    'Download Link 1': {
+      proving: 'https://snowgem.org/downloads/sprout-proving.key',
+      verifying: 'https://snowgem.org/downloads/sprout-verifying.key',
+    },
+    'zcash': {
       proving: 'https://zcash.dl.mercerweiss.com/sprout-proving.key',
       verifying: 'https://zcash.dl.mercerweiss.com/sprout-verifying.key',
     },
-    'ysrdtr.stackpathdns.com': {
-      proving: 'http://kmdwallet-yq0ysrdtr.stackpathdns.com/file/supernet/sprout-proving.key',
-      verifying: 'http://kmdwallet-yq0ysrdtr.stackpathdns.com/file/supernet/sprout-verifying.key',
-    },
     'temporary link': {
-      proving: 'https://snowgem.org/downloads/sprout-proving.key',
-      verifying: 'https://snowgem.org/downloads/sprout-verifying.key',
+      proving: 'https://z.cash/downloads/sprout-proving.key',
+      verifying: 'https://z.cash/downloads/sprout-verifying.key',
     },
  };
 
