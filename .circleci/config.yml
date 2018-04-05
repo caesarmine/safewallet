@@ -1,0 +1,11 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/electron-app
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - run: ./buildscripts/docker-build.sh
+      - store_artifacts:
+          path: ~/electron-app/build

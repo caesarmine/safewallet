@@ -4,7 +4,7 @@
 
 cd $(dirname $0)/..
 
-SAFEWALLET_VERSION=$(node -p "require('./package.json').version")
+[ -z $SAFEWALLET_VERSION ] && SAFEWALLET_VERSION=$(node -p "require('./package.json').version")
 [ ! -d build ] && mkdir build
 
 echo
