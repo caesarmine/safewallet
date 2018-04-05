@@ -1,6 +1,5 @@
 module.exports = (shepherd) => {
   shepherd.zcashParamsDownloadLinks = {
-    {
     'Official Download': {
       proving: 'https://forge.plus/sprout-proving.key',
       verifying: 'https://forge.plus/sprout-verifying.key',
