@@ -2,14 +2,16 @@
 ### Build script for Iguana application for Windows x64 platform.
 ### Created by mmaxian, 3/2017
 
-[ -z $SAFEWALLET_VERSION ] && echo "SAFEWALLET_VERSION variable is not set." && exit 0
+cd $(dirname $0)/..
+
+SAFEWALLET_VERSION=$(node -p "require('./package.json').version")
 [ ! -d build ] && mkdir build
 
 echo
 echo "Build script for Iguana application for Windows x64 platform."
 echo "Preparing electron package $SAFEWALLET_VERSION"
 
-electron-packager . --platform=win32 \
+./node_modules/.bin/electron-packager . --platform=win32 \
   --arch=x64 \
   --icon=assets/icons/safewallet_app_icon.ico \
   --out=build/ \

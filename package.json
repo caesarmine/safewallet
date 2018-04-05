@@ -8,7 +8,11 @@
     "start": "electron .",
     "make-patch": "./make-patch.sh",
     "make-rpm": "node make-rpm.js",
-    "make-deb": "node make-deb.js"
+    "make-deb": "node make-deb.js",
+    "build:osx": "./buildscripts/electron-build-osx.sh",
+    "build:windows": "./buildscripts/electron-build-windows.sh",
+    "build:linux": "./buildscripts/electron-build-linux.sh",
+    "build": "concurrently 'npm run build:osx' 'npm run build:windows' 'npm run build:linux'"
   },
   "repository": "https://github.com/Fair-Exchange/Safewallet/",
   "homepage": "http://supernet.org",
@@ -21,9 +25,11 @@
   "author": "SuperNET",
   "license": "MIT",
   "devDependencies": {
+    "concurrently": "^3.5.1",
     "electron": "1.8.2",
     "electron-installer-debian": "^0.6.0",
-    "electron-installer-redhat": "^0.5.0"
+    "electron-installer-redhat": "^0.5.0",
+    "electron-packager": "^12.0.0"
   },
   "dependencies": {
     "adm-zip": "^0.4.7",
