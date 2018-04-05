@@ -1,0 +1,18 @@
+machine:
+  node:
+    version: 9.6.1
+dependencies:
+  override:
+    - npm install
+
+general:
+  artifacts:
+    - "build/*"
+
+deployment:
+  master:
+    commands:
+      - dpkg --add-architecture i386
+      - apt-get update
+      - apt-get -y install wine wine32 --no-install-recommends
+      - npm run build
