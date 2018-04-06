@@ -6,5 +6,6 @@ RUN apt-get -y install wine wine32 --no-install-recommends
 
 WORKDIR /electronapp
 
+COPY package.json .
+RUN npm install -f --production
 COPY . .
-RUN yarn --production
