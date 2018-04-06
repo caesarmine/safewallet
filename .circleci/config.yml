@@ -33,7 +33,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: ./scripts/docker-build.sh
+      - run: ./buildscripts/docker-build.sh
 
       - store_artifacts:
           path: ~/repo/build
