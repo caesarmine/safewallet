@@ -13,13 +13,12 @@ jobs:
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
-      - image: docker:17.05.0-ce-git
+      # - image: docker:17.05.0-ce-git
 
     working_directory: ~/repo
 
     steps:
       - checkout
-      - setup_remote_docker
 
       # Download and cache dependencies
       - restore_cache:
@@ -28,7 +27,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: yarn install
+      - run: yarn install -f --production
 
       - save_cache:
           paths:
@@ -36,10 +35,12 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
-          name: Run docker
+          name: Build
           command: |
-            set +o pipefail
-            ./buildscripts/docker-build.sh
+            dpkg --add-architecture i386
+            apt-get update
+            apt-get -y install wine wine32 --no-install-recommends
+            npm run build
 
       - store_artifacts:
           path: ~/repo/build
