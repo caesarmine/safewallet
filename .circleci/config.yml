@@ -37,9 +37,9 @@ jobs:
       - run:
           name: Build
           command: |
-            dpkg --add-architecture i386
-            apt-get update
-            apt-get -y install wine wine32 --no-install-recommends
+            sudo dpkg --add-architecture i386
+            sudo apt-get update
+            sudo apt-get -y install wine wine32 --no-install-recommends
             npm run build
 
       - store_artifacts:
